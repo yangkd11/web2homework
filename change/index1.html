@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+	
+</style>
+</head>
+
+<body>
+  <div style="background: url('images1/5.jpg') no-repeat ;width:100%;height:800px; ">
+    <div id="box"> 
+      <div id="img1">
+           <img src="images1/12.jpg" width="399" height="400" id="Simg"/>
+           <div id="slider"></div>
+      </div>   
+      <div id="img2">
+          <img src="images1/12.jpg" width="800" height="800" id="Bimg"/>  
+      </div>
+      <ul id="smallImg"> 
+        <li><img src="images1/12.jpg" width="100" height="100"/></li>
+        <li><img src="images1/8.jpg" width="100" height="100"/></li>
+        <li><img src="images1/7.jpg" width="100" height="100"/></li>
+        <li><img src="images1/10.jpg" width="100" height="100"/></li>
+      </ul> 
+    </div> 
+  <div class="text" id="text">
+  </div>
+  <div class="video" id="video1">
+    <video src="images1/1.mp4" width="100%" height="100%" type="video/mp4" controls="controls" id="videoPlay" muted></video>
+  </div>
+  <div class="buy" id="buy">  
+    <img src="images1/buy1.png">
+  </div>
+  </div>
+<script>
+  var box = document.getElementById("box");
+  var img1 = document.getElementById("img1");
+  var Simg = document.getElementById("Simg");
+  var slider = document.getElementById("slider");
+  var img2 = document.getElementById("img2");
+  var Bimg = document.getElementById("Bimg");
+  var smallImg = document.getElementById("smallImg");
+  var imgList = smallImg.getElementsByTagName("img");
+  var text = document.getElementById("text");
+  var video1 = document.getElementById("video1");
+  var videoPlay = document.getElementById("videoPlay");
+  var buy =  document.getElementById("buy");
+  var ifOnclick = false;
+  var videoPath = ["images1/1.mp4","images1/2.mp4","images1/1.mp4","images1/1.mp4"];
+  text.onmouseover = function(){
+    text.innerHTML="祖安是个被魔法和科学双重扭曲的城市，并且它无节制的实验天性已自酿恶果。然而，祖安的宽松限制，让它的研究者和发明家们有很大余地，得以用一种逐步增加的速率去推动科学的界限，尽管是好是坏另说。在这种条件下，来自祖安科技魔法大学的一群博士生在智能蒸汽自动化领域有所创新，他们发明了蒸汽机器人布里茨。布里茨被开发出来的目的，是协助祖安的有害废料回收处理工作，在各种不允许人工监控的条件下快速判断废料是否可回收。然而，布里茨很快就开始展现出了不同寻常的行为。随着时间的流逝，科学家们已经有能力鉴别出一种经过验证的学习进程，于是布里茨很快成了名人。然而，福兮祸所依，斯坦里克·皮德利教授将创造机器人的荣誉据为己有，尽管真相世人皆知。在接踵而至的法律纠纷中，双方明显都没有把机器人的利益放在心上，而布里茨低声下气地请求着自主权。由于广大公众的支持，祖安自由党议会在几周内就宣布布里茨是完全独立、有意识的个体。这个被争论所困扰的独特存在离开了祖安，并且觉得自己没有容身之地。现在，他正在瓦洛兰各地寻找着一个属于他的地方。虽然布里茨会打败任何挡道的人，但他有一颗金子般的心……包裹在一具铁架内……一层钢壳中。";
+  }
+  text.onmouseout = function(){
+    text.innerHTML="";
+  }
+  img1.onmouseover = function(){
+    slider.style.display = "block";
+  }
+  img1.onmouseout = function(){
+    slider.style.display = "none";
+    img2.style.display = "none";
+  }
+  img1.onmousemove = function(e){
+    var img1X = e.clientX;
+    var img1Y = e.clientY;
+    var boxLeft = box.offsetLeft;
+    var boxTop = box.offsetTop;
+    var sliderWidth = slider.offsetWidth;
+    var sliderHeight = slider.offsetHeight;
+    slider.style.left =(img1X-boxLeft-sliderWidth/2)+"px";
+    slider.style.top =(img1Y-boxTop-sliderHeight/2)+"px";
+    if(parseInt(slider.style.left) <= 1){
+      slider.style.left =0+"px";
+    }
+    else if(parseInt(slider.style.left) >= (img1.offsetWidth -sliderWidth)){
+       slider.style.left = (img1.offsetWidth -sliderWidth)+"px";
+    }
+    else if(parseInt(slider.style.top) <= 0){
+      slider.style.top =0;
+    }
+    else if(parseInt(slider.style.top) >= (img1.offsetHeight -sliderHeight)){
+       slider.style.top = (img1.offsetHeight -sliderHeight)+"px";
+    }
+    img2.style.display = "block";
+    var img1Width = img1.offsetWidth;
+    var img1Height = img1.offsetHeight;
+    var img2Width = img2.offsetWidth;
+    var img2Height = img2.offsetHeight;
+    var BimgWidth = Bimg.offsetWidth;
+    var BimgHeight = Bimg.offsetHeight;
+    var img2Left = img2.offsetLeft;
+    var img2Top = img2.offsetTop;
+    img1RelativeX = (img1X-boxLeft)/img1Width;
+    img1RelativeY = (img1Y-boxTop)/img1Height;
+    BimgRelativeX = img1RelativeX*BimgWidth;
+    BimgRelativeY = img1RelativeY*BimgHeight;
+    var img2RelativeX = img1RelativeX*img2Width;
+    var img2RelativeY = img1RelativeY*img2Height;
+    Bimg.style.left = (img2RelativeX-BimgRelativeX)+"px";
+    Bimg.style.top = (img2RelativeY-BimgRelativeY)+"px";
+  }
+  for(var i = 0;i<imgList.length;i++){
+    imgList[i].onmouseover = function(){
+      this.className="active";
+    }
+    imgList[i].onmouseout = function(){
+      this.className="";
+    }
+    imgList[i].index = i;
+    imgList[i].onclick = function(){
+      var imgSrc = this.getAttribute("src");
+      Simg.setAttribute("src",imgSrc);
+      Bimg.setAttribute("src",imgSrc);
+      video1.style.display = "block";
+      ifOnclick = true;
+      videoPlay.setAttribute("src",videoPath[this.index]);
+      videoPlay.autoplay = "autoplay";
+    }
+  }
+  video1.onmouseover = function(){
+    this.className = "activeVideo";
+  }
+  video1.onmouseout = function(){
+    this.className = "video";
+    if(ifOnclick){
+      video1.style.display = "none";
+    }
+  }
+  buy.onclick = function(){
+    alert("购买成功");
+  }
+</script>
+</body>
+</html>

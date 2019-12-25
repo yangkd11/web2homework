@@ -1,0 +1,103 @@
+/*
+* @Author: asus
+* @Date:   2019-12-16 19:33:10
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-12-25 19:40:27
+*/
+*{
+	margin:0; 
+	padding:0;
+}
+li{	
+	list-style: none;
+	float: left;
+}
+#box{
+	width:750px;
+	height:750px;
+	position:relative;
+	float: left;
+}
+#img1{
+	width:400px;
+	height:400px;
+	position:relative;
+	left:0;
+	top:0;
+}
+#slider{
+	width:150px;
+	height:150px;
+	position:absolute;
+	background:#CCC;
+	opacity:0.4;
+	cursor: move;
+	display:none;
+	filter:alpha(opacity=40);
+}
+#img2{
+	position:absolute;
+	float: left;
+	right:0;
+	top:0;
+	display:none; 
+	width:350px;
+	height:350px;
+	overflow: hidden;
+}
+#Bimg{
+	position:absolute;
+	left:0;
+	top:0;
+}
+#smallImg{
+	float: left;
+	width: 450px;
+	height: 100px;
+	top: 800px;
+	left: 0;
+} 
+.active{
+	position: relative;
+	border: 3px solid black;
+	width: 150px;
+	height: 150px;
+	margin-top: -20px;
+	margin-left: -20px;
+	margin-right: -20px;
+}
+.text{	
+	position: relative;
+	float: right;
+	right: 0;
+	top: 0;
+	width: 700px;
+	height: 400px;
+	display: block;
+	font-size:20px;
+	color: #fff;
+}
+.video{
+	position: absolute;
+	right: 0px;
+	top: 400px;
+	background-color: black;
+	width: 700px;
+	height: 400px;
+	display: none;
+}
+.activeVideo{
+	position: absolute;
+	right: 0px;
+	top: 200px;
+	background-color: black;
+	width: 900px;
+	height: 600px;
+}
+.buy{
+	position:relative;
+	width: 405px;
+	height: 106px;
+	left: 50px;
+	bottom: 180px;
+}
